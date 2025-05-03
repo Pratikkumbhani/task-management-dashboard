@@ -45,10 +45,10 @@ The app will run on `http://localhost:3000`.
 ## 🛠 Architecture Overview
 
 - **App.jsx**: Wraps the app with `DndProvider`
-- **KanbanBoard.jsx**: Fetches tasks and distributes them into columns
-- **Column.jsx**: Accepts dropped tasks and displays current tasks
+- **Board.jsx**: Fetches tasks and distributes them into columns
+- **TaskColumn.jsx**: Accepts dropped tasks and displays current tasks
 - **TaskCard.jsx**: Represents a single draggable task
-- **Modal.jsx**: Displays a form to create a new task
+- **AddTaskModal.jsx**: Displays a form to create a new task
 
 ## 📬 API Reference
 
