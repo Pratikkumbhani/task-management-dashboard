@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# Task Management Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive Kanban-style Task Management Dashboard built with React.js and Tailwind CSS, allowing users to manage tasks in a simple and intuitive interface.
 
-## Available Scripts
+## 🔧 Features
 
-In the project directory, you can run:
+- 🗂 View tasks in three Kanban columns: **To Do**, **In Progress**, and **Done**
+- ➕ Add new tasks via a modal form
+- 📦 Drag and drop tasks between columns using `react-dnd`
+- 🔄 Persist all task operations using a mock API
 
-### `npm start`
+## 🚀 Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React.js** – UI Development
+- **Tailwind CSS** – Styling
+- **React DnD** – Drag and Drop functionality
+- **Axios** – API communication
+- **MockAPI** – Backend for data persistence  
+  `https://6815f0d732debfe95dbce136.mockapi.io/api/tasks`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🖼 Project Preview
 
-### `npm test`
+*https://task-management-dashboard-omega-three.vercel.app*
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📝 How to Run Locally
 
-### `npm run build`
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Pratikkumbhani/task-management-dashboard
+   cd task-management-dashboard
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Start the development server:
+   ```bash
+   npm start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The app will run on `http://localhost:3000`.
 
-### `npm run eject`
+## 🛠 Architecture Overview
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **App.jsx**: Wraps the app with `DndProvider`
+- **KanbanBoard.jsx**: Fetches tasks and distributes them into columns
+- **Column.jsx**: Accepts dropped tasks and displays current tasks
+- **TaskCard.jsx**: Represents a single draggable task
+- **Modal.jsx**: Displays a form to create a new task
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📬 API Reference
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+All API interactions use:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+https://6815f0d732debfe95dbce136.mockapi.io/api/tasks
+```
 
-## Learn More
+- `GET /tasks` – Fetch all tasks
+- `POST /tasks` – Create a task
+- `PUT /tasks/:id` – Update a task
+- `DELETE /tasks/:id` – Delete a task
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## ✅ Validations
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Title is required while adding a task.
+- Status must be selected from: *To Do*, *In Progress*, or *Done*.
 
-### Code Splitting
+## 📂 Folder Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+src/
+│
+├── assets/
+│   └── icons/
+│       └── DeleteIcon.jsx
+│
+├── components/
+│   ├── Common/
+│   │   └── Loader.jsx
+│   └── Kanban/
+│       ├── AddTaskModal.jsx
+│       ├── Board.jsx
+│       ├── TaskCard.jsx
+│       └── TaskColumn.jsx
+│
+├── App.js
+└── index.css
+```
 
-### Analyzing the Bundle Size
+## 🧑‍💻 Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Pratik Kumbhani**  
+Front-End Developer | React.js Specialist
