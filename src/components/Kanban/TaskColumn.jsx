@@ -6,7 +6,7 @@ const ItemTypes = {
   CARD: "card",
 };
 
-export default function TaskColumn({ status, tasks, moveCard, deleteCard }) {
+export default function TaskColumn({ status, tasks, moveCard, deleteCard, toggleEditCard }) {
   const [, drop] = useDrop({
     accept: ItemTypes.CARD,
     drop: (draggedItem) => moveCard(draggedItem.id, status),
@@ -18,7 +18,7 @@ export default function TaskColumn({ status, tasks, moveCard, deleteCard }) {
       <div className="bg-gray-100 rounded p-2 min-h-[300px]">
         {tasks?.length !== 0 ? (
           tasks.map((task) => (
-            <TaskCard key={task.id} task={task} deleteCard={deleteCard} />
+            <TaskCard key={task.id} task={task} deleteCard={deleteCard} toggleEditCard={toggleEditCard} />
           ))
         ) : (
           <p className="text-center mt-5">No Data Found</p>

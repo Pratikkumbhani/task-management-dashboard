@@ -3,6 +3,7 @@ import axios from "axios";
 import AddTaskModal from "./AddTaskModal";
 import TaskColumn from "./TaskColumn";
 import Loader from "../Common/Loader";
+import EditTaskModal from "./EditTaskModal";
 
 const API_URL = "https://6815f0d732debfe95dbce136.mockapi.io/api/tasks";
 const statuses = ["To Do", "In Progress", "Done"];
@@ -10,6 +11,8 @@ const statuses = ["To Do", "In Progress", "Done"];
 export default function Board() {
   const [tasks, setTasks] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editId, setEditId] = useState(null)
   const [loading, setLoading] = useState(false);
 
   const fetchTasks = async () => {
@@ -79,6 +82,25 @@ export default function Board() {
     }
   };
 
+  const handleEdit = async (taskDetail) =>{
+    console.log(editId, taskDetail);
+    setLoading(true);
+    try {
+      await axios.put(`${API_URL}/${editId}`, taskDetail);
+      fetchTasks()
+      setLoading(false);
+      toggleEditCard(null)
+    } catch (error) {
+      setLoading(false);
+      console.error("Failed to update task:", error);
+    }
+  }
+
+  const toggleEditCard = (id) =>{
+    setEditId(id)
+    setShowEditModal(!showEditModal)
+  }
+
   return (
     <>
       {loading && <Loader />}
@@ -99,11 +121,15 @@ export default function Board() {
             tasks={tasks.filter((t) => t.status === status)}
             moveCard={moveCard}
             deleteCard={deleteCard}
+            toggleEditCard={toggleEditCard}
           />
         ))}
       </div>
       {showModal && (
         <AddTaskModal onClose={() => setShowModal(false)} onSave={handleAdd} />
+      )}
+      {showEditModal && (
+        <EditTaskModal onClose={() => setShowEditModal(false)} editId={editId} onSave={handleEdit} />
       )}
     </>
   );
